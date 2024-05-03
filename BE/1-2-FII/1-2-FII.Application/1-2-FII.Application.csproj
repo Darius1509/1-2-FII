@@ -8,7 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.9.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\1-2-FII.Domain\1-2-FII.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Answers\" />
+    <Folder Include="Features\Assignments\" />
+    <Folder Include="Features\Courses\" />
+    <Folder Include="Features\Resources\" />
   </ItemGroup>
 
 </Project>
