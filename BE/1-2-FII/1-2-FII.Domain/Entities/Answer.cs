@@ -4,6 +4,10 @@ namespace _1_2_FII.Domain.Entities
 {
     public class Answer
     {
+        public Answer()
+        {
+            
+        }
         public Answer(Guid answerAssignmentRespodedId, Guid answerStudentId, string answerContent)
         {
             AnswerId = Guid.NewGuid();
@@ -11,7 +15,7 @@ namespace _1_2_FII.Domain.Entities
             AnswerStudentId = answerStudentId;
             AnswerContent = answerContent;
         }
-
+        
         public Guid AnswerId { get; private set; }
         public Guid AnswerAssignmentRespondedId { get; private set; }
         public Guid AnswerStudentId { get; private set; }
