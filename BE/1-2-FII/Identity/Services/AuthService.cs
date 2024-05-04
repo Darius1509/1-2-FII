@@ -55,7 +55,7 @@ namespace Identity.Services
 
         public async Task<(int, string)> Login(LoginModel model)
         {
-            var user = await userManager.FindByNameAsync(model.Email!);
+            var user = await userManager.FindByNameAsync(model.UserName!);
             if (user == null) return (0, "Invalid Username");
             if (!await userManager.CheckPasswordAsync(user, model.Password!))
                 return (0, "Invalid Password");
