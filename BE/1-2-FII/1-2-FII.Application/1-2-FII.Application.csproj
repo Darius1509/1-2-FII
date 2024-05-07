@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Answers\" />
     <Folder Include="Features\Assignments\" />
     <Folder Include="Features\Courses\" />
     <Folder Include="Features\Resources\" />
