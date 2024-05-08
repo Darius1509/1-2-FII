@@ -1,4 +1,5 @@
 ﻿using _1_2_FII.Domain.Common;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace _1_2_FII.Domain.Entities
 {
@@ -66,17 +67,20 @@ namespace _1_2_FII.Domain.Entities
             return null;
         }
 
-        public void AttachAnswer(Guid answerId)
+        public static Result<Assignment> AttachAnswer(Result<Assignment> assignment,Guid answerId)
         {
             if (answerId == Guid.Empty)
             {
-                throw new ArgumentException("Answer id cannot be empty");
+                return Result<Assignment>.Failure("Answer id cannot be empty");
             }
-            if (AssignmentAnswersId == null)
+            if (assignment.Value.AssignmentAnswersId == null)
             {
-                AssignmentAnswersId = new List<Guid>();
+                assignment.Value.AssignmentAnswersId = new List<Guid>();
+                return Result<Assignment>.Success(assignment.Value);
             }
-            AssignmentAnswersId.Add(answerId);
+            assignment.Value.AssignmentAnswersId.Add(answerId);
+
+            return Result<Assignment>.Success(assignment.Value);
         }
     }
 }

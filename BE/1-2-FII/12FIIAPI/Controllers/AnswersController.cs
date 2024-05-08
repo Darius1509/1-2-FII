@@ -10,7 +10,7 @@ namespace _12FIIAPI.Controllers
 {
     public class AnswersController : ApiControllerBase
     {
-        [Authorize(Roles ="Admin, Professor")]
+        //[Authorize(Roles ="Admin, Professor")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
@@ -19,7 +19,7 @@ namespace _12FIIAPI.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = "Admin, Professor")]
+        //[Authorize(Roles = "Admin, Professor")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -33,7 +33,7 @@ namespace _12FIIAPI.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = "Admin, Student")]
+        //[Authorize(Roles = "Admin, Student")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -47,7 +47,7 @@ namespace _12FIIAPI.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -61,7 +61,7 @@ namespace _12FIIAPI.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = "Admin, Student")]
+        //[Authorize(Roles = "Admin, Student")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
