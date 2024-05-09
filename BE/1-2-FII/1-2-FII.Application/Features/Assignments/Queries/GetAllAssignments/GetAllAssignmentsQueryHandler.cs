@@ -25,7 +25,8 @@ namespace _1_2_FII.Application.Features.Assignments.Queries.GetAllAssignments
                     AssignmentQuestion = assignment.AssignmentQuestion,
                     AssignmentCode = assignment.AssignmentCode,
                     AssignmentCourseId = assignment.AssignmentCourseId,
-                    AssignmentProfessorId = assignment.AssignmentProfessorId
+                    AssignmentProfessorId = assignment.AssignmentProfessorId,
+                    AssignmentAnswersId = assignment.AssignmentAnswersId
                 });
             }
 
