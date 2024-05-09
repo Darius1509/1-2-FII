@@ -57,7 +57,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "EcommerceApp Management API",
+        Title = "OneTwoFII Management API",
 
     });
 
