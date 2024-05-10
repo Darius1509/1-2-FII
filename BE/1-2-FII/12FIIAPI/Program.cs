@@ -7,6 +7,13 @@ using Infrastructure;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    // Set the maximum request body size to 10KB
+    serverOptions.Limits.MaxRequestBodySize = 10 * 1024;  // 10KB
+});
+
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
