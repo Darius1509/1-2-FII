@@ -1,5 +1,6 @@
 ﻿using _1_2_FII.Application.Features.Resources.Commands.CreateResource;
 using _1_2_FII.Application.Features.Resources.Commands.DeleteResource;
+using _1_2_FII.Application.Features.Resources.Commands.DownloadResource;
 using _1_2_FII.Application.Features.Resources.Commands.UpdateResource;
 using _1_2_FII.Application.Features.Resources.Queries.GetAllResources;
 using _1_2_FII.Application.Features.Resources.Queries.GetResourceById;
@@ -33,6 +34,22 @@ namespace _12FIIAPI.Controllers
             }
             return Ok(result);
         }
+
+        //[Authorize(Roles="Admin, Professor, Student")]
+        [HttpGet("download/{resourceId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Download(Guid resourceId)
+        {
+            var command = new DownloadResourceCommand() { ResourceId = resourceId };
+            var result = await Mediator.Send(command);
+            if (result.ResourceFileContent == null || result.ResourceFileContent.Length == 0)
+            {
+                return NotFound("File not found or empty.");
+            }
+            return File(result.ResourceFileContent, "application/octet-stream", result.ResourceFileName);
+        }
+
         //[Authorize(Roles = "Admin, Professor")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
