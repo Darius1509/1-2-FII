@@ -4,7 +4,10 @@ using _12FIIAPI.Services;
 using _12FIIAPI.Utility;
 using Identity;
 using Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,6 +86,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors("Open");
+
+app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

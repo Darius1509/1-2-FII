@@ -1,6 +1,8 @@
 ﻿using _1_2_FII.Application.Persistence;
 using _1_2_FII.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace _1_2_FII.Application.Features.Answers.Commands.CreateAnswer
 {
@@ -8,11 +10,13 @@ namespace _1_2_FII.Application.Features.Answers.Commands.CreateAnswer
     {
         private readonly IAnswerRepository answerRepository;
         private readonly IAssignmentRepository assignmentRepository;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public CreateAnswerCommandHandler(IAnswerRepository answerRepository, IAssignmentRepository assignmentRepository)
+        public CreateAnswerCommandHandler(IAnswerRepository answerRepository, IAssignmentRepository assignmentRepository, IHttpContextAccessor httpContextAccessor)
         {
             this.answerRepository = answerRepository;
             this.assignmentRepository = assignmentRepository;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<CreateAnswerCommandResponse> Handle(CreateAnswerCommand command, CancellationToken cancellationToken)
@@ -28,7 +32,10 @@ namespace _1_2_FII.Application.Features.Answers.Commands.CreateAnswer
                 return response;
             }
 
-            var answer = Answer.Create(command.AnswerAssignmentRespondedId, command.AnswerStudentId, command.AnswerContent);
+            var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userGuid = Guid.Parse(userId);
+
+            var answer = Answer.Create(command.AnswerAssignmentRespondedId, userGuid, command.AnswerContent);
             if (!answer.IsSuccess)
             {
                 response.Success = false;

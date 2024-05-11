@@ -32,7 +32,7 @@ namespace _12FIIAPI.Services
             {
                 return httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             }
-            else
+            else 
             {
                 return null;
             }

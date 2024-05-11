@@ -1,16 +1,21 @@
 ﻿using _1_2_FII.Application.Persistence;
 using _1_2_FII.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace _1_2_FII.Application.Features.Assignments.Commands.CreateAssignment
 {
     public class CreateAssignmentCommandHandler : IRequestHandler<CreateAssignmentCommand, CreateAssignmentCommandResponse>
     {
         private readonly IAssignmentRepository repository;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public CreateAssignmentCommandHandler(IAssignmentRepository repository)
+        public CreateAssignmentCommandHandler(IAssignmentRepository repository, IHttpContextAccessor httpContextAccessor)
         {
             this.repository = repository;
+            this.httpContextAccessor = httpContextAccessor;
+
         }
 
         public async Task<CreateAssignmentCommandResponse> Handle(CreateAssignmentCommand command, CancellationToken cancellationToken)
@@ -29,7 +34,9 @@ namespace _1_2_FII.Application.Features.Assignments.Commands.CreateAssignment
             }
             if (response.Success)
             {
-                var assignment = Assignment.Create(command.AssignmentQuestion, command.AssignmentCode, command.AssignmentCourseId, command.AssignmentProfessorId);
+                string userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var userGuid = Guid.Parse(userId);
+                var assignment = Assignment.Create(command.AssignmentQuestion, command.AssignmentCode, command.AssignmentCourseId, userGuid);
                 if(assignment.IsSuccess)
                 {
                     await repository.AddAsync(assignment.Value);
