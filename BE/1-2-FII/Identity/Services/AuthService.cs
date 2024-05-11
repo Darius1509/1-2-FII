@@ -50,6 +50,12 @@ namespace Identity.Services
             if (await roleManager.RoleExistsAsync(UserRole.Student))
                 await userManager.AddToRoleAsync(user, role);
 
+            if(await roleManager.RoleExistsAsync(UserRole.Admin))
+                await userManager.AddToRoleAsync(user, role);
+
+            if(await roleManager.RoleExistsAsync(UserRole.Professor))
+                await userManager.AddToRoleAsync(user, role);
+
             return (1, "User created successfully!");
         }
 

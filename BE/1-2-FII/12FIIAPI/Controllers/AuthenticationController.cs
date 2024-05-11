@@ -60,7 +60,7 @@ namespace _12FIIAPI.Controllers
                     return BadRequest("Invalid payload");
                 }
 
-                var (status, message) = await _authService.Registration(model, UserRole.Student);
+                var (status, message) = await _authService.Registration(model, model.Role);
 
                 if (status == 0)
                 {
