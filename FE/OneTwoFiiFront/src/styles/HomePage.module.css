@@ -41,6 +41,10 @@
     position: relative;
     width: 100%;
     max-width: 600px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
   
   .search-bar {
@@ -49,7 +53,7 @@
     border: none;
     border-radius: 25px; 
     background-color: #618B4A;
-    color: white;
+    color: #FCFCFC;
     font-weight: bold;
     font-size: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -57,7 +61,7 @@
   }
   
   .search-bar::placeholder {
-    color: white;
+    color: #FCFCFC;
   }
   
   .search-button {
@@ -73,7 +77,7 @@
   .search-button img {
     width: 1.5rem;
     height: 1.5rem;
-    fill: white;
+    fill: #FCFCFC;
   }
   
   .image-content {

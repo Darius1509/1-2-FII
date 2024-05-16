@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import styles from '../styles/HomePage.module.css';
 import studentImage from '../assets/student_image.svg';
 import searchIcon from '../assets/search_icon.svg';

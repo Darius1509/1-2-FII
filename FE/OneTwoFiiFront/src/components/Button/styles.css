@@ -1,5 +1,6 @@
 .custom-button {
-    background-color: white;
+    align-self: center;
+    background-color: #FCFCFC;
     color: #40531B; 
     border: none;
     border-radius: 8px;

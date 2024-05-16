@@ -1,0 +1,83 @@
+.register-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #FCFCFC;
+  }
+  
+  .card-title {
+    color: #FCFCFC;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 70%;
+  }
+  
+  .register-form label {
+    align-self: flex-start;
+    padding: 5px;
+    color: #FCFCFC;
+    margin-bottom: 5px;
+    font-size: large;
+  }
+  
+  .register-form input,
+  .register-form select {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #FCFCFC;
+    background-color: transparent;
+    color: #FCFCFC;
+  }
+  
+  .register-button {
+    align-self: center;
+    background-color: #FCFCFC;
+    color: #40531B;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    width: fit-content;
+  }
+  
+  .register-button:hover {
+    background-color: #e2e8e4;
+  }
+  
