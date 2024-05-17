@@ -1,0 +1,15 @@
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .card-title {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 1.5rem; /* Adjust font size */
+  }
+  

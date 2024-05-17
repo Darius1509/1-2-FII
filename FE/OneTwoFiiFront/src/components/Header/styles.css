@@ -1,3 +1,4 @@
+/* src/components/Header/styles.css */
 .header {
   position: fixed;
   top: 0;
@@ -20,12 +21,18 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  text-decoration: none; /* Remove underline from link */
+}
+
+.app-name:hover {
+  color: #618B4A;
 }
 
 .header-buttons {
   display: flex;
+  align-items: center;
   gap: 10px;
-  margin-left: auto;
+  margin-left: auto; /* Move all elements to the right */
   margin-right: 20px;
 }
 
@@ -33,5 +40,12 @@
   color: #FCFCFC;
   font-size: 1rem;
   margin-right: 10px;
-  padding-top:7px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.profile-icon {
+  width: 30px; /* Fixed size for the icon */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px;
 }
