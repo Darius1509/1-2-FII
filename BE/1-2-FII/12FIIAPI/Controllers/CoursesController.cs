@@ -3,6 +3,7 @@ using _1_2_FII.Application.Features.Courses.Commands.DeleteCourse;
 using _1_2_FII.Application.Features.Courses.Commands.UpdateCourse;
 using _1_2_FII.Application.Features.Courses.Queries.GetAllCourses;
 using _1_2_FII.Application.Features.Courses.Queries.GetCourseById;
+using _1_2_FII.Application.Features.Courses.Queries.GetCourseByName;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,13 +22,27 @@ namespace _12FIIAPI.Controllers
         }
 
         [Authorize(Roles = "Admin, Student, Professor")]
-        [HttpGet("{id}")]
+        [HttpGet("id/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await Mediator.Send(new GetCourseByIdQuery(id));
             if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
+        [Authorize(Roles ="Admin,Professor,Student")]
+        [HttpGet("name/{name}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            var result = await Mediator.Send(new GetCourseByNameQuery(name));
+            if(result == null)
             {
                 return NotFound();
             }

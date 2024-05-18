@@ -6,7 +6,7 @@ namespace Infrastructure.Repositories
 {
     public class BaseRepository<T> : IAsyncRepository<T> where T : class
     {
-        private readonly _12FIIContext context;
+        protected readonly _12FIIContext context;
 
         public BaseRepository(_12FIIContext context)
         {
