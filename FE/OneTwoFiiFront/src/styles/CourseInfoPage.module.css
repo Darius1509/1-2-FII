@@ -1,0 +1,20 @@
+.course-info-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #40531B; /* Adjust this if needed */
+    padding: 20px;
+  }
+  
+  .course-info-header {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .course-info-description, .course-info-semester, .course-info-credits, .course-info-website {
+    color: black;
+  }
+  

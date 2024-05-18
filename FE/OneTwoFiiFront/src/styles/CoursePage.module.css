@@ -5,11 +5,24 @@
   justify-content: center;
   height: 100vh;
   background-color: #FCFCFC;
+  color: black;
 }
 
-.course-name {
-  color: black;
+.course-content {
   text-align: center;
-  font-size: 2rem;
-  margin: 0;
+  padding: 20px;
+}
+
+.course-header {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.course-blocks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
 }

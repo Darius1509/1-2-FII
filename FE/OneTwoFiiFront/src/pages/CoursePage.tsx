@@ -1,20 +1,36 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../components/Header/Header';
+import Block from '../components/Block/Block';
+import infoIcon from '../assets/information_icon.svg';
+import resourcesIcon from '../assets/download_icon.svg';
+import assignmentsIcon from '../assets/assignment_icon.svg';
 import '../styles/CoursePage.module.css';
 
 const CoursePage: React.FC = () => {
   const location = useLocation();
   const courseData = location.state?.courseData;
+  const navigate = useNavigate();
 
   if (!courseData) {
     return <p>No course data found.</p>;
   }
 
+  const handleInfoClick = () => {
+    navigate('/course/info', { state: { courseData } });
+  };
+
   return (
-    <div>
+    <div className="course-page">
       <Header />
-      <h2 style={{ color: 'black', textAlign: 'center', fontSize: '2rem', margin: 0 }}>{courseData.courseName}</h2>
+      <div className="course-content">
+        <h1 style={{ display: 'flex', flexDirection: 'column', alignItems:'center', color:'black'}} className="course-header">{courseData.courseName}</h1>
+        <div style={{display: 'flex', justifyContent:'space-evenly'}} className="course-blocks">
+          <Block imageSrc={infoIcon} text="View info" onClick={handleInfoClick} />
+          <Block imageSrc={resourcesIcon} text="Access resources" />
+          <Block imageSrc={assignmentsIcon} text="View assignments" />
+        </div>
+      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import CoursePage from './pages/CoursePage';
 import NotFoundPage from './pages/NotFoundPage';
+import CourseInfoPage from './pages/CourseInfoPage';
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const App: React.FC = () => {
             element={<ProtectedRoute component={ProfilePage} path="/profile" />}
           />
           <Route path="/course" element={<CoursePage/>}/>
+          <Route path="/course/info" element={<CourseInfoPage/>}/>
           <Route path="*" element={<NotFoundPage/>} />
         </Routes>
       </Router>
