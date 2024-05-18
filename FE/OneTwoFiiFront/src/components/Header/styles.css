@@ -1,4 +1,3 @@
-/* src/components/Header/styles.css */
 .header {
   position: fixed;
   top: 0;
@@ -21,7 +20,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  text-decoration: none; /* Remove underline from link */
+  text-decoration: none;
 }
 
 .app-name:hover {
@@ -32,7 +31,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: auto; /* Move all elements to the right */
+  margin-left: auto;
   margin-right: 20px;
 }
 
@@ -45,7 +44,7 @@
 }
 
 .profile-icon {
-  width: 30px; /* Fixed size for the icon */
-  height: auto; /* Maintain aspect ratio */
+  width: 30px;
+  height: auto;
   margin-right: 10px;
 }

@@ -4,20 +4,20 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #FCFCFC;
   }
   
   .profile-card-content {
     display: flex;
-    align-items: center; /* Align items in the center vertically */
+    align-items: center;
   }
   
   .profile-card-icon  {
     border: none;
     background-color: transparent;
-    width: 30%; /* Adjust the size as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 20px; /* Space between the icon and the details */
+    width: 30%;
+    height: auto;
+    margin-right: 20px;
   }
   
   .profile-card-details {
@@ -27,23 +27,23 @@
   }
   
   .card-title {
-    color: white;
+    color: #FCFCFC;
     margin-bottom: 20px;
-    font-size: 1.5rem; /* Adjust font size */
+    font-size: 1.5rem;
   }
   
   .fetch-info-button {
     align-self: flex-start;
-    background-color: white;
-    color: #3a5a40; /* Use same green as header buttons */
+    background-color: #FCFCFC;
+    color: #40531B;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 1rem;
-    font-weight: bold; /* Make button text bold */
+    font-weight: bold;
     text-align: center;
-    margin-bottom: 20px; /* Add margin to separate from input fields */
+    margin-bottom: 20px;
   }
   
   .fetch-info-button:hover {
@@ -51,7 +51,7 @@
   }
   
   .user-info p {
-    color: white;
+    color: #FCFCFC;
     font-size: 1rem;
     margin: 5px 0;
   }

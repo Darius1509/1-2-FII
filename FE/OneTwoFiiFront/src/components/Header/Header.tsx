@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import { useAuth } from '../../context/AuthContext';
-import profileIcon from '../../assets/profile_icon.svg'; // Import the profile icon
+import profileIcon from '../../assets/profile_icon.svg';
 import './styles.css';
 
 const Header: React.FC = () => {

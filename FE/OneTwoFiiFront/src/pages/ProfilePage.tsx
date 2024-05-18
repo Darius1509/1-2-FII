@@ -1,10 +1,10 @@
-// src/pages/ProfilePage.tsx
 import React, { useState } from 'react';
 import Card from '../components/Card/Card';
 import Header from '../components/Header/Header';
 import '../styles/ProfilePage.module.css';
 import { useAuth } from '../context/AuthContext';
 import profileIcon from '../assets/profile_icon.svg';
+import Button from '../components/Button/Button';
 
 const ProfilePage: React.FC = () => {
   const { token } = useAuth();
@@ -45,7 +45,7 @@ const ProfilePage: React.FC = () => {
         <img src={profileIcon} alt="Profile" className="profile-card-icon" style={{ width: '30%', height: 'auto', marginRight: '20px' }} />
           <div className="profile-card-details">
             <h2 className="card-title">Profile Page</h2>
-            <button className="fetch-info-button" onClick={fetchUserInfo}>Fetch Info</button>
+            <Button className="fetch-info-button" onClick={fetchUserInfo} text="Fetch Info" />
             {userInfo && (
               <div className="user-info">
                 <p><strong>Username:</strong> {userInfo.username}</p>
