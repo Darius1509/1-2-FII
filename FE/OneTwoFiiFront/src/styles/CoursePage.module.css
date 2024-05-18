@@ -1,0 +1,15 @@
+.course-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #FCFCFC;
+}
+
+.course-name {
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+}

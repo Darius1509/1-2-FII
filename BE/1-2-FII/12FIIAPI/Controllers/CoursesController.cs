@@ -35,7 +35,6 @@ namespace _12FIIAPI.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles ="Admin,Professor,Student")]
         [HttpGet("name/{name}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
