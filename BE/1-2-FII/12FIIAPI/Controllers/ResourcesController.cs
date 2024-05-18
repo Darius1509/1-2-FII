@@ -3,6 +3,7 @@ using _1_2_FII.Application.Features.Resources.Commands.DeleteResource;
 using _1_2_FII.Application.Features.Resources.Commands.DownloadResource;
 using _1_2_FII.Application.Features.Resources.Commands.UpdateResource;
 using _1_2_FII.Application.Features.Resources.Queries.GetAllResources;
+using _1_2_FII.Application.Features.Resources.Queries.GetResourceByCourseId;
 using _1_2_FII.Application.Features.Resources.Queries.GetResourceById;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -22,12 +23,25 @@ namespace _12FIIAPI.Controllers
         }
 
         [Authorize(Roles = "Admin, Student, Professor")]
-        [HttpGet("{id}")]
+        [HttpGet("id/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await Mediator.Send(new GetResourceByIdQuery(id));
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
+        [HttpGet("courseId/{courseId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByCourseId(Guid courseId)
+        {
+            var result = await Mediator.Send(new GetResourceByCourseIdQuery(courseId));
             if (result == null)
             {
                 return NotFound();
