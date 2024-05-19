@@ -1,0 +1,46 @@
+.course-resource-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FCFCFC;
+    padding: 20px;
+  }
+  
+  .course-resource-header {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .resources-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-right:20px;
+  }
+  
+  .download-button {
+    display: flex;
+    align-items: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .download-icon {
+    margin-right: 10px;
+  }
+
+  h1{
+    color: black;
+    text-align: center;
+  }
+  

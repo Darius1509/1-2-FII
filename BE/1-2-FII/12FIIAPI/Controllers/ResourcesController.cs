@@ -49,7 +49,6 @@ namespace _12FIIAPI.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles="Admin, Professor, Student")]
         [HttpGet("download/{resourceId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

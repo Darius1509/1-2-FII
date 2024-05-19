@@ -9,6 +9,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import CoursePage from './pages/CoursePage';
 import NotFoundPage from './pages/NotFoundPage';
 import CourseInfoPage from './pages/CourseInfoPage';
+import CourseResourcePage from './pages/CourseResourcePage';
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
           />
           <Route path="/course" element={<CoursePage/>}/>
           <Route path="/course/info" element={<CourseInfoPage/>}/>
+          <Route path="/course/resources" element={<CourseResourcePage/>}/>
           <Route path="*" element={<NotFoundPage/>} />
         </Routes>
       </Router>
