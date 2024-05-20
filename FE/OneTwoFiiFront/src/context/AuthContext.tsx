@@ -5,6 +5,10 @@ interface AuthContextProps {
   setToken: (token: string) => void;
   username: string | null;
   setUsername: (username: string) => void;
+  userId: string | null;
+  setUserId: (userId: string) => void;
+  role: string | null;
+  setRole: (role: string) => void;
   logout: () => void;
 }
 
@@ -17,6 +21,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [username, setUsernameState] = useState<string | null>(() => {
     return localStorage.getItem('username');
   });
+  const [userId, setUserIdState] = useState<string | null>(() => {
+    return localStorage.getItem('userId');
+  });
+  const [role, setRoleState] = useState<string | null>(() => {
+    return localStorage.getItem('role');
+  });
 
   const setToken = (token: string) => {
     setTokenState(token);
@@ -28,6 +38,18 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUsernameState(username);
     localStorage.setItem('username', username);
     console.log('Username set:', username);
+  };
+
+  const setUserId = (userId: string) => {
+    setUserIdState(userId);
+    localStorage.setItem('userId', userId);
+    console.log('User ID set:', userId);
+  };
+
+  const setRole = (role: string) => {
+    setRoleState(role);
+    localStorage.setItem('role', role);
+    console.log('Role set:', role);
   };
 
   const logout = async () => {
@@ -44,14 +66,19 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     } finally {
       setTokenState(null);
       setUsernameState(null);
+      setUserIdState(null);
+      setRoleState(null);
       localStorage.removeItem('jwtToken');
       localStorage.removeItem('username');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('role');
+      localStorage.removeItem('token')
       window.location.href = '/';
     }
   };
 
   return (
-    <AuthContext.Provider value={{ token, setToken, username, setUsername, logout }}>
+    <AuthContext.Provider value={{ token, setToken, username, setUsername, userId, setUserId, role, setRole, logout }}>
       {children}
     </AuthContext.Provider>
   );

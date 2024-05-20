@@ -6,7 +6,7 @@ import '../styles/LoginPage.module.css';
 import { useAuth } from '../context/AuthContext';
 
 const LoginPage: React.FC = () => {
-  const { setToken, setUsername } = useAuth();
+  const { setToken, setUsername, setUserId, setRole } = useAuth();
   const [username, setUsernameState] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -37,6 +37,22 @@ const LoginPage: React.FC = () => {
       console.log('Received token:', token);
       setToken(token);
       setUsername(username);
+
+      const userInfoResponse = await fetch('http://localhost:5079/api/v1/Authentication/currentuserinfo', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (!userInfoResponse.ok) {
+        throw new Error('Failed to fetch user information');
+      }
+
+      const userInfo = await userInfoResponse.json();
+      setUserId(userInfo.claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]);
+      setRole(userInfo.claims["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]);
+      
       window.location.href = '/';
     } catch (error) {
       console.error('Login error:', error);
