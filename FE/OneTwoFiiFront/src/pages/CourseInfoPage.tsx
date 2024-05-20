@@ -15,15 +15,17 @@ const CourseInfoPage: React.FC = () => {
   return (
     <div className="course-info-page">
       <Header />
-      <LongCard>
-        <h2 className="course-info-header">{courseData.courseName}</h2>
-        <p className="course-info-description">{courseData.courseDescription}</p>
-        <p className="course-info-semester">Semester: {courseData.courseSemester}</p>
-        <p className="course-info-credits">Credits: {courseData.courseNrOfCredits}</p>
-        <a href={courseData.courseWebsite} className="course-info-website" target="_blank" rel="noopener noreferrer">
-          Course Website
-        </a>
-      </LongCard>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <LongCard>
+          <h2 className="course-info-header">{courseData.courseName}</h2>
+          <p className="course-info-description">{courseData.courseDescription}</p>
+          <p className="course-info-semester">Semester: {courseData.courseSemester}</p>
+          <p className="course-info-credits">Credits: {courseData.courseNrOfCredits}</p>
+          <a href={courseData.courseWebsite} className="course-info-website" target="_blank" rel="noopener noreferrer">
+            Course Website
+          </a>
+        </LongCard>
+      </div>
     </div>
   );
 };

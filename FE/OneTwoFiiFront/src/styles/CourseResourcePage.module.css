@@ -24,7 +24,7 @@
     margin-right:20px;
   }
   
-  .download-button {
+  .download-button, .delete-button {
     display: flex;
     align-items: center;
     background-color: #4CAF50;
@@ -34,6 +34,11 @@
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
   
   .download-icon {
     margin-right: 10px;
@@ -42,5 +47,25 @@
   h1{
     color: black;
     text-align: center;
+  }
+
+  .add-resource-button {
+    background-color: #618B4A;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .plus-icon {
+    font-size: 1.5rem;
+    margin-right: 5px;
   }
   

@@ -81,7 +81,7 @@ namespace _12FIIAPI.Controllers
 
 
 
-        [Authorize(Roles = "Admin, Professor")]
+        //[Authorize(Roles = "Admin, Professor")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -113,7 +113,7 @@ namespace _12FIIAPI.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = "Admin, Professor")]
+        //[Authorize(Roles = "Admin, Professor")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

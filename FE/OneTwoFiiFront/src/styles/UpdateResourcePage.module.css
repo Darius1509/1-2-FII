@@ -1,0 +1,46 @@
+.add-resource-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #FCFCFC;
+  }
+  
+  .add-resource-header {
+    color: #FCFCFC;
+    margin-bottom: 20px;
+    font-size: 1.5rem; 
+  }
+  
+  .resource-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .resource-form label {
+    color: #FCFCFC;
+    font-size: 1rem;
+  }
+  
+  .resource-form input {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #FCFCFC;
+    background-color: transparent;
+    color: #FCFCFC;
+  }
+  
+  .upload-button {
+    background-color: #FCFCFC;
+    color: #40531B;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
