@@ -5,16 +5,34 @@ using _12FIIAPI.Utility;
 using Identity;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure logging
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
+builder.Logging.ClearProviders();
+
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
-    // Set the maximum request body size to 10KB
-    serverOptions.Limits.MaxRequestBodySize = 10 * 1024;  // 10KB
+    // Set the maximum request body size to 10MB
+    serverOptions.Limits.MaxRequestBodySize = 10 * 1024 * 1024;  // 10MB
+});
+
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 10 * 1024 * 1024; // 10MB
 });
 
 builder.Services.AddHttpContextAccessor();

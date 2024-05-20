@@ -8,6 +8,7 @@ using _1_2_FII.Application.Features.Resources.Queries.GetResourceById;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace _12FIIAPI.Controllers
 {
@@ -54,14 +55,31 @@ namespace _12FIIAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Download(Guid resourceId)
         {
-            var command = new DownloadResourceCommand() { ResourceId = resourceId };
-            var result = await Mediator.Send(command);
-            if (result.ResourceFileContent == null || result.ResourceFileContent.Length == 0)
+            try
             {
-                return NotFound("File not found or empty.");
+                var command = new DownloadResourceCommand() { ResourceId = resourceId };
+                var result = await Mediator.Send(command);
+
+                if (result.ResourceFileContent == null || result.ResourceFileContent.Length == 0)
+                {
+                    return NotFound("File not found or empty.");
+                }
+
+                // Serve the file as a blob
+                return new FileContentResult(result.ResourceFileContent, result.ResourceContentType)
+                {
+                    FileDownloadName = result.ResourceFileName,
+                    EnableRangeProcessing = true
+                };
             }
-            return File(result.ResourceFileContent, "application/octet-stream", result.ResourceFileName);
+            catch (Exception ex)
+            {
+                Log.Error(ex, "An error occurred while downloading the file.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+            }
         }
+
+
 
         [Authorize(Roles = "Admin, Professor")]
         [HttpPost]

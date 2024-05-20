@@ -1,5 +1,7 @@
 ﻿using _1_2_FII.Application.Persistence;
 using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace _1_2_FII.Application.Features.Resources.Commands.DownloadResource
 {
@@ -14,19 +16,15 @@ namespace _1_2_FII.Application.Features.Resources.Commands.DownloadResource
 
         public async Task<DownloadResourceCommandResponse> Handle(DownloadResourceCommand request, CancellationToken cancellationToken)
         {
-            var response = new DownloadResourceCommandResponse();
-            if(response.Success)
+            var resource = await repository.FindByIdAsync(request.ResourceId);
+            if (resource.IsSuccess)
             {
-                var resource = await repository.FindByIdAsync(request.ResourceId);
-                if (resource.IsSuccess)
+                return new DownloadResourceCommandResponse
                 {
-                    return new DownloadResourceCommandResponse
-                    {
-                        ResourceFileContent = resource.Value.ResourceFileContent,
-                        ResourceFileName = resource.Value.ResourceName,
-                        ResourceContentType = "application/octet-stream"
-                    };
-                }
+                    ResourceFileContent = resource.Value.ResourceFileContent,
+                    ResourceFileName = resource.Value.ResourceName,
+                    ResourceContentType = "application/octet-stream"
+                };
             }
             return new DownloadResourceCommandResponse();
         }
