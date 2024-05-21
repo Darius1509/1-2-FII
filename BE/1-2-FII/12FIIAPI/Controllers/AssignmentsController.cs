@@ -3,6 +3,7 @@ using _1_2_FII.Application.Features.Assignments.Commands.CreateAssignment;
 using _1_2_FII.Application.Features.Assignments.Commands.DeleteAssignment;
 using _1_2_FII.Application.Features.Assignments.Commands.UpdateAssignment;
 using _1_2_FII.Application.Features.Assignments.Queries.GetAllAssignments;
+using _1_2_FII.Application.Features.Assignments.Queries.GetAssignmentByCourseId;
 using _1_2_FII.Application.Features.Assignments.Queries.GetAssignmentById;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,12 +22,26 @@ namespace _12FIIAPI.Controllers
         }
 
         [Authorize(Roles="Admin, Professor, Student")]
-        [HttpGet("{id}")]
+        [HttpGet("id/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await Mediator.Send(new GetAssignmentByIdQuery(id));
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
+        [Authorize(Roles ="Admin, Professor, Student")]
+        [HttpGet("courseId/{courseId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByCourseId(Guid courseId)
+        {
+            var result = await Mediator.Send(new GetAssignmentByCourseIdQuery(courseId));
             if (result == null)
             {
                 return NotFound();
