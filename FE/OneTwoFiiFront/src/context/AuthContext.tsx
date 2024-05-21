@@ -10,6 +10,7 @@ interface AuthContextProps {
   role: string | null;
   setRole: (role: string) => void;
   logout: () => void;
+  authFetch: (input: RequestInfo, init?: RequestInit) => Promise<Response>;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -31,34 +32,29 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const setToken = (token: string) => {
     setTokenState(token);
     localStorage.setItem('jwtToken', token);
-    console.log('JWT token set:', token);
   };
 
   const setUsername = (username: string) => {
     setUsernameState(username);
     localStorage.setItem('username', username);
-    console.log('Username set:', username);
   };
 
   const setUserId = (userId: string) => {
     setUserIdState(userId);
     localStorage.setItem('userId', userId);
-    console.log('User ID set:', userId);
   };
 
   const setRole = (role: string) => {
     setRoleState(role);
     localStorage.setItem('role', role);
-    console.log('Role set:', role);
   };
 
   const logout = async () => {
     try {
-      await fetch('http://localhost:5079/api/v1/Authentication/logout', {
+      await authFetch('http://localhost:5079/api/v1/Authentication/logout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
         },
       });
     } catch (error) {
@@ -72,13 +68,24 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       localStorage.removeItem('username');
       localStorage.removeItem('userId');
       localStorage.removeItem('role');
-      localStorage.removeItem('token')
       window.location.href = '/';
     }
   };
 
+  const authFetch = async (input: RequestInfo, init?: RequestInit): Promise<Response> => {
+    const token = localStorage.getItem('jwtToken');
+    const authInit = {
+      ...init,
+      headers: {
+        ...init?.headers,
+        'Authorization': `Bearer ${token}`,
+      },
+    };
+    return fetch(input, authInit);
+  };
+
   return (
-    <AuthContext.Provider value={{ token, setToken, username, setUsername, userId, setUserId, role, setRole, logout }}>
+    <AuthContext.Provider value={{ token, setToken, username, setUsername, userId, setUserId, role, setRole, logout, authFetch }}>
       {children}
     </AuthContext.Provider>
   );

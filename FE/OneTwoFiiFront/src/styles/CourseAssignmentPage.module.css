@@ -1,0 +1,35 @@
+.course-assignments-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #FCFCFC;
+  }
+  
+  .course-assignments-header {
+    color: black;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .assignments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+  }
+  
+  .assignment-question {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .assignment-code {
+    background-color: white;
+    color: black;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  

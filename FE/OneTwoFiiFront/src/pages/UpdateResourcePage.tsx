@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 import Card from '../components/Card/Card';
 import Button from '../components/Button/Button';
 import '../styles/UpdateResourcePage.module.css';
+import { useAuth } from '../context/AuthContext';
 
 const UpdateResourcePage: React.FC = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ const UpdateResourcePage: React.FC = () => {
   const [resourceFile, setResourceFile] = useState<File | null>(null);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { authFetch, role } = useAuth();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -37,7 +39,7 @@ const UpdateResourcePage: React.FC = () => {
     formData.append('ResourceFileContent', resourceFile || new Blob([resource.resourceFileContent], { type: 'text/plain' }));
 
     try {
-      const response = await fetch(`http://localhost:5079/api/v1/Resources/${resource.resourceId}`, {
+      const response = await authFetch(`http://localhost:5079/api/v1/Resources/${resource.resourceId}`, {
         method: 'PUT',
         body: formData,
       });

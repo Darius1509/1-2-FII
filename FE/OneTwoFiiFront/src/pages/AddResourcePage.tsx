@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 import Card from '../components/Card/Card';
 import Button from '../components/Button/Button';
 import '../styles/AddResourcePage.module.css';
+import { useAuth } from '../context/AuthContext';
 
 const AddResourcePage: React.FC = () => {
   const [resourceType, setResourceType] = useState('');
@@ -15,6 +16,7 @@ const AddResourcePage: React.FC = () => {
   const location = useLocation();
   const courseId = location.state?.courseData?.courseId;
   const navigate = useNavigate();
+  const { authFetch, role } = useAuth();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -40,7 +42,7 @@ const AddResourcePage: React.FC = () => {
     formData.append('ResourceFileContent', resourceFile);
 
     try {
-      const response = await fetch('http://localhost:5079/api/v1/Resources', {
+      const response = await authFetch('http://localhost:5079/api/v1/Resources', {
         method: 'POST',
         body: formData,
       });

@@ -24,6 +24,10 @@ const CoursePage: React.FC = () => {
     navigate('/course/resources', { state: { courseData } });
   };
 
+  const handleAssignmentsClick = () => {
+    navigate('/course/assignments', { state: { courseData } });
+  };
+
   return (
     <div className="course-page">
       <Header />
@@ -32,7 +36,7 @@ const CoursePage: React.FC = () => {
         <div style={{display: 'flex', justifyContent:'space-evenly'}} className="course-blocks">
           <Block imageSrc={infoIcon} text="View info" onClick={handleInfoClick} />
           <Block imageSrc={resourcesIcon} text="Access resources" onClick={handleResourceClick} />
-          <Block imageSrc={assignmentsIcon} text="View assignments" />
+          <Block imageSrc={assignmentsIcon} text="View assignments" onClick={handleAssignmentsClick}/>
         </div>
       </div>
     </div>
