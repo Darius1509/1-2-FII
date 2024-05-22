@@ -47,7 +47,7 @@ const ViewAnswersPage: React.FC = () => {
         {answers.map((answer) => (
           <LongCard key={answer.answerId}>
             <p>Student ID: {answer.answerStudentId}</p>
-            <pre className="code-snippet">{answer.answerContent}</pre>
+            <pre style={{display:'flex',backgroundColor:'white',color:'black',borderRadius:'5px',padding:'10px'}}>{answer.answerContent}</pre>
           </LongCard>
         ))}
       </div>

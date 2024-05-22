@@ -80,6 +80,20 @@ const CourseAssignmentsPage: React.FC = () => {
     navigate(`/course/assignments/viewanswers`, { state: { assignmentId, courseData } });
   };
 
+  const handleAddAnswer = (assignment: any) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
+    if (role === 'Professor') {
+      alert('You must be a student to complete this action.');
+      return;
+    }
+
+    navigate(`/course/assignments/addanswer`, { state: { assignment } });
+  };
+
   return (
     <div className="course-assignments-page">
       <Header />
@@ -95,6 +109,11 @@ const CourseAssignmentsPage: React.FC = () => {
                   onClick={() => handleViewAnswers(assignment.assignmentId)}
                   className="view-answers-button"
                 />
+              <Button
+                text="Add Answer"
+                onClick={() => handleAddAnswer(assignment)}
+                className="add-answer-button"
+              />
             </div>
           </LongCard>
         ))}
