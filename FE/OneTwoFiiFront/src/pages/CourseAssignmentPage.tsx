@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 import LongCard from '../components/LongCard/LongCard';
 import '../styles/CourseAssignmentPage.module.css';
 import { useAuth } from '../context/AuthContext';
+import Button from '../components/Button/Button';
 
 interface Assignment {
   assignmentId: string;
@@ -65,6 +66,20 @@ const CourseAssignmentsPage: React.FC = () => {
     navigate('/course/assignments/addassignment', { state: { courseData } });
   };
 
+  const handleViewAnswers = (assignmentId: string) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
+    if (role === 'Student') {
+      alert('You must be a professor to complete this action.');
+      return;
+    }
+
+    navigate(`/course/assignments/viewanswers`, { state: { assignmentId, courseData } });
+  };
+
   return (
     <div className="course-assignments-page">
       <Header />
@@ -74,6 +89,13 @@ const CourseAssignmentsPage: React.FC = () => {
           <LongCard key={assignment.assignmentId}>
             <p className="assignment-question" style={{fontSize:'1.5rem'}}>{assignment.assignmentQuestion}</p>
             <pre style={{display:'flex',backgroundColor:'white',color:'black',borderRadius:'5px',padding:'10px'}}>{assignment.assignmentCode}</pre>
+            <div className="button-group">
+              <Button
+                  text="View Answers"
+                  onClick={() => handleViewAnswers(assignment.assignmentId)}
+                  className="view-answers-button"
+                />
+            </div>
           </LongCard>
         ))}
       </div>

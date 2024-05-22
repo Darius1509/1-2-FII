@@ -14,6 +14,7 @@ import AddResourcePage from './pages/AddResourcePage';
 import UpdateResourcePage from './pages/UpdateResourcePage';
 import CourseAssignmentsPage from './pages/CourseAssignmentPage';
 import AddAssignmentPage from './pages/AddAssignmentPage';
+import ViewAnswersPage from './pages/ViewAnswersPage';
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
             element={<ProtectedRoute component={CourseAssignmentsPage} path="/course/assignments" />}
           />
           <Route path="/course/assignments/addassignment" element={<AddAssignmentPage />} />
+          <Route path="/course/assignments/viewanswers" element={<ViewAnswersPage />} />
           <Route path="*" element={<NotFoundPage/>} />
         </Routes>
       </Router>
