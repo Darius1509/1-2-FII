@@ -6,7 +6,6 @@ using _1_2_FII.Application.Features.Resources.Queries.GetAllResources;
 using _1_2_FII.Application.Features.Resources.Queries.GetResourceByCourseId;
 using _1_2_FII.Application.Features.Resources.Queries.GetResourceById;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 

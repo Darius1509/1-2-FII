@@ -1,7 +1,5 @@
 ﻿using _1_2_FII.Application.Persistence;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace _1_2_FII.Application.Features.Resources.Commands.DownloadResource
 {

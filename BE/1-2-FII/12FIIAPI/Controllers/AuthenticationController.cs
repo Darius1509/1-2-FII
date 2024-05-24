@@ -2,7 +2,6 @@
 using _1_2_FII.Application.Contracts.Interfaces;
 using _1_2_FII.Application.Models.Identity;
 using _12FIIAPI.Models;
-using Identity.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _12FIIAPI.Controllers

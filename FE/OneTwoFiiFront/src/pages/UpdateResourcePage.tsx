@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Card from '../components/Card/Card';
 import Button from '../components/Button/Button';
@@ -16,8 +16,7 @@ const UpdateResourcePage: React.FC = () => {
   const [resourcePrerequisites, setResourcePrerequisites] = useState(resource.resourcePrerequisites);
   const [resourceFile, setResourceFile] = useState<File | null>(null);
   const [error, setError] = useState('');
-  const navigate = useNavigate();
-  const { authFetch, role } = useAuth();
+  const { authFetch } = useAuth();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -104,7 +103,7 @@ const UpdateResourcePage: React.FC = () => {
           <label htmlFor="uploadFile">Upload File</label>
           <input type="file" id="uploadFile" name="uploadFile" onChange={handleFileChange} />
 
-          <Button type="submit" className="upload-button" text="Update" />
+          <Button type="submit" text="Update" />
 
           {error && <p className="error">{error}</p>}
         </form>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../components/Header/Header';
-import LongCard from '../components/LongCard/LongCard';
 import '../styles/AddAssignmentPage.modules.css';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/Button/Button';
@@ -22,7 +21,7 @@ const AddAnswerPage: React.FC = () => {
     e.preventDefault();
 
     const newAnswer = {
-      answerId: '3fa85f64-5717-4562-b3fc-2c963f66afa6', // Placeholder value
+      answerId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
       answerAssignmentRespondedId: assignmentData.assignmentId,
       answerStudentId: localStorage.getItem('userId') || '',
       answerContent,
@@ -64,7 +63,7 @@ const AddAnswerPage: React.FC = () => {
             required
             style={{backgroundColor:'white',color:'black',borderRadius:'5px',padding:'10px',width:'100%'}}
           />
-          <Button type="submit" className="upload-button" text="Submit answer"></Button>
+          <Button type="submit" text="Submit answer"></Button>
           {message && <p>{message}</p>}
         </form>
       </Card>

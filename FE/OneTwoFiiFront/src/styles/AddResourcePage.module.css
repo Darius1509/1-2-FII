@@ -9,7 +9,7 @@
   }
   
   .add-resource-header {
-    color: white;
+    color: #FCFCFC;
     margin-bottom: 20px;
     font-size: 1.5rem; 
   }
@@ -21,7 +21,7 @@
   }
   
   .resource-form label {
-    color: white;
+    color: #FCFCFC;
     font-size: 1rem;
   }
   
@@ -30,11 +30,11 @@
     border: none;
     border-bottom: 2px solid #FCFCFC;
     background-color: transparent;
-    color: white;
+    color: #FCFCFC;
   }
   
   .upload-button {
-    background-color: white;
+    background-color: #FCFCFC;
     color: #40531B;
     padding: 10px 20px;
     border: none;
